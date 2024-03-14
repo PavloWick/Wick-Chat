@@ -16,7 +16,7 @@ export const SocketContextProvider = ({ children }) => {
   useEffect(() => {
     if (authUser) {
       // Our real servers port number 5000
-      const socket = io("http://localhost:5000", {
+      const socket = io("https://wick-chat.onrender.com", {
         query: {
           userId: authUser._id,
         },
