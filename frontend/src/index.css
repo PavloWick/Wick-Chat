@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-    background: url(bg.jpg);
+    background: url("C:\Users\pashk\Desktop\JavaScript Projects\Wick-Chat\frontend\public\bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

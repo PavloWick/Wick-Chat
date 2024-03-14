@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import useConversation from "../zustand/useConversation";
 import toast from "react-hot-toast";
@@ -12,12 +12,15 @@ const useGetMessages = () => {
       setLoading(true);
       try {
         const res = await fetch(`/api/messages/${selectedConversation._id}`);
+
         const data = await res.json();
         if (data.error) throw new Error(data.error);
+
         setMessages(data);
-        if (setMessages.data != null) console.log("Yes null");
+
+        if (data.error) throw new Error(data.error);
       } catch (error) {
-        toast.error(error.message);
+        toast.error(`Here getMessages ${error.message}`);
       } finally {
         setLoading(false);
       }
@@ -25,8 +28,9 @@ const useGetMessages = () => {
     if (selectedConversation?._id) {
       getMessages();
     }
+    // this just rerenders everything if selectedConversation or messages get updated
   }, [selectedConversation?._id, setMessages]);
-  if ({ messages }.length < 0) return;
+
   return { messages, loading };
 };
 

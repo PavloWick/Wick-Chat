@@ -53,7 +53,7 @@ export const sendMessage = async (req, res) => {
   }
 };
 
-export const getMessage = async (req, res) => {
+export const getMessages = async (req, res) => {
   try {
     const { id: userToChatId } = req.params;
     const senderId = req.user._id;
@@ -62,15 +62,13 @@ export const getMessage = async (req, res) => {
       participants: { $all: [senderId, userToChatId] },
     }).populate("messages");
 
-    if (
-      !conversation ||
-      !conversation.messages ||
-      !conversation.messages.length === 0
-    )
-      return res.status(204).send();
+    if (!conversation) {
+      res.status(200).json([]);
+      return;
+    }
+    const messages = conversation?.messages || [];
 
-    res.status(200).json(conversation.messages);
-    process.stdout.write("Good");
+    res.status(200).json(messages);
   } catch (error) {
     process.stdout.write("Error in getMessage controller: ", error.message);
     res.status(500).json({

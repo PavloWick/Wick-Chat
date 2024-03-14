@@ -10,12 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.3",
     "socket.io-client": "^4.7.4",
+    "wick-chat": "file:..",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
